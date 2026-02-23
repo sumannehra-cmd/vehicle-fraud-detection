@@ -1,8 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
-import FraudCheck from "./pages/FraudCheck";
-import History from "./pages/History";
 import Protected from "./components/Protected";
 
 function App() {
@@ -16,24 +14,6 @@ function App() {
           element={
             <Protected>
               <Dashboard />
-            </Protected>
-          }
-        />
-
-        <Route
-          path="/check"
-          element={
-            <Protected>
-              <FraudCheck />
-            </Protected>
-          }
-        />
-
-        <Route
-          path="/history"
-          element={
-            <Protected>
-              <History />
             </Protected>
           }
         />

@@ -8,22 +8,18 @@ export default function Login() {
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    try {
-      const res = await fetch("http://localhost:5000/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
+    const res = await fetch("http://localhost:5000/api/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
 
-      const data = await res.json();
-      setMsg(data.message);
+    const data = await res.json();
+    setMsg(data.message);
 
-      if (res.ok) {
-        localStorage.setItem("user", JSON.stringify(data.user));
-        navigate("/dashboard");
-      }
-    } catch (err) {
-      setMsg("Server error");
+    if (res.ok) {
+      localStorage.setItem("user", JSON.stringify(data.user));
+      navigate("/dashboard");
     }
   };
 
