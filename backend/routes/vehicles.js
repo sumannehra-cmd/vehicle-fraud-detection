@@ -1,10 +1,3 @@
-import mongoose from "mongoose";
-
-const vehicleSchema = new mongoose.Schema({
-  name: String
-});
-
-export default mongoose.model("Vehicle", vehicleSchema);
 const express = require('express');
 const router  = express.Router();
 const { protect, adminOnly } = require('../middleware/protect');

@@ -26,7 +26,7 @@ app.use(morgan('dev'));
 
 // Frontend se requests aane do (CORS)
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5000',
+  origin: process.env.CLIENT_URL || 'http://localhost:3000',
   credentials: true,   // cookies bhejne ke liye zaroori
 }));
 
@@ -54,5 +54,5 @@ app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Server chal raha hai: http://localhost:5000`);
+  console.log(`Server chal raha hai: http://localhost:${PORT}`);
 });
