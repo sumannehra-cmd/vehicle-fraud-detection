@@ -1,0 +1,36 @@
+:root {
+    --bg-main: #08111f;
+    --bg-soft: #0f172a;
+    --bg-card: rgba(15, 23, 42, 0.78);
+
+    --border: rgba(148, 163, 184, 0.14);
+    --border-soft: rgba(255, 255, 255, 0.06);
+
+    --text-main: #e2e8f0;
+    --text-soft: #94a3b8;
+    --text-muted: #64748b;
+
+    --blue: #2563eb;
+    --blue-soft: rgba(37, 99, 235, 0.14);
+    --green: #10b981;
+    --red: #f43f5e;
+    --orange: #f59e0b;
+
+    --radius-sm: 10px;
+    --radius-md: 14px;
+    --radius-lg: 18px;
+    --radius-xl: 24px;
+
+    --shadow-card: 0 18px 40px rgba(0, 0, 0, 0.28);
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+input[type='date']::-webkit-calendar-picker-indicator {
+    filter: invert(0.6);
+    cursor: pointer;
+}

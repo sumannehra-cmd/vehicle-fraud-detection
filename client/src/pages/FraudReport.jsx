@@ -6,7 +6,8 @@ export default function FraudReport() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        api.get('/claims/fraud-report')
+        // ✅ Fixed: was '/claims/fraud-report', correct endpoint is '/fraud/flagged'
+        api.get('/fraud/flagged')
             .then(res => setReports(res.data))
             .catch(() => setReports([]))
             .finally(() => setLoading(false));
@@ -22,22 +23,38 @@ export default function FraudReport() {
                     <thead>
                         <tr style={{ background: '#e74c3c', color: 'white' }}>
                             <th style={{ padding: 12, textAlign: 'left' }}>Claim ID</th>
+                            <th style={{ padding: 12, textAlign: 'left' }}>Claimant</th>
+                            <th style={{ padding: 12, textAlign: 'left' }}>Vehicle</th>
                             <th style={{ padding: 12, textAlign: 'left' }}>Amount</th>
                             <th style={{ padding: 12, textAlign: 'left' }}>Fraud Score</th>
                             <th style={{ padding: 12, textAlign: 'left' }}>Flags</th>
+                            <th style={{ padding: 12, textAlign: 'left' }}>Status</th>
                         </tr>
                     </thead>
                     <tbody>
                         {reports.map((claim, i) => (
                             <tr key={claim._id} style={{ background: i % 2 === 0 ? '#fff5f5' : 'white' }}>
-                                <td style={{ padding: 12 }}>{claim._id}</td>
-                                <td style={{ padding: 12 }}>₹{claim.amount}</td>
-                                <td style={{ padding: 12 }}>{claim.fraudScore}/100</td>
+                                <td style={{ padding: 12, fontFamily: 'monospace', fontSize: 12 }}>
+                                    {claim._id.slice(-8).toUpperCase()}
+                                </td>
+                                {/* ✅ populated fields from backend: claimant.name, vehicle.registrationNo */}
+                                <td style={{ padding: 12 }}>{claim.claimant?.name || 'N/A'}</td>
+                                <td style={{ padding: 12 }}>{claim.vehicle?.registrationNo || 'N/A'}</td>
+                                <td style={{ padding: 12 }}>₹{claim.claimAmount?.toLocaleString()}</td>
+                                <td style={{ padding: 12 }}>
+                                    <span style={{
+                                        background: claim.fraudScore >= 75 ? '#e74c3c' : '#f39c12',
+                                        color: 'white', padding: '3px 10px', borderRadius: 12, fontSize: 13
+                                    }}>
+                                        {claim.fraudScore}/100
+                                    </span>
+                                </td>
                                 <td style={{ padding: 12 }}>
                                     {claim.fraudFlags?.map((f, i) => (
-                                        <span key={i} style={{ color: 'red', marginRight: 6 }}>⚠ {f}</span>
+                                        <span key={i} style={{ color: 'red', marginRight: 6, fontSize: 13 }}>⚠ {f}</span>
                                     ))}
                                 </td>
+                                <td style={{ padding: 12 }}>{claim.status}</td>
                             </tr>
                         ))}
                     </tbody>

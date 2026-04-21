@@ -6,11 +6,21 @@ export default function AdminPanel() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        api.get('/auth/users')
+        // ✅ Fixed: was '/auth/users', correct endpoint is '/users'
+        api.get('/users')
             .then(res => setUsers(res.data))
             .catch(() => setUsers([]))
             .finally(() => setLoading(false));
     }, []);
+
+    const toggleStatus = async (id, currentStatus) => {
+        try {
+            const { data } = await api.put(`/users/${id}/status`, { isActive: !currentStatus });
+            setUsers(prev => prev.map(u => u._id === id ? data : u));
+        } catch {
+            alert('Failed to update user status');
+        }
+    };
 
     return (
         <div style={{ padding: '2rem' }}>
@@ -22,6 +32,8 @@ export default function AdminPanel() {
                             <th style={{ padding: 12, textAlign: 'left' }}>Name</th>
                             <th style={{ padding: 12, textAlign: 'left' }}>Email</th>
                             <th style={{ padding: 12, textAlign: 'left' }}>Role</th>
+                            <th style={{ padding: 12, textAlign: 'left' }}>Status</th>
+                            <th style={{ padding: 12, textAlign: 'left' }}>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,6 +42,26 @@ export default function AdminPanel() {
                                 <td style={{ padding: 12 }}>{user.name}</td>
                                 <td style={{ padding: 12 }}>{user.email}</td>
                                 <td style={{ padding: 12 }}>{user.role}</td>
+                                <td style={{ padding: 12 }}>
+                                    <span style={{
+                                        background: user.isActive ? '#2ecc71' : '#e74c3c',
+                                        color: 'white', padding: '3px 10px', borderRadius: 12, fontSize: 13
+                                    }}>
+                                        {user.isActive ? 'Active' : 'Inactive'}
+                                    </span>
+                                </td>
+                                <td style={{ padding: 12 }}>
+                                    <button
+                                        onClick={() => toggleStatus(user._id, user.isActive)}
+                                        style={{
+                                            padding: '4px 12px', borderRadius: 6, border: 'none',
+                                            cursor: 'pointer', fontSize: 13,
+                                            background: user.isActive ? '#e74c3c' : '#2ecc71', color: 'white'
+                                        }}
+                                    >
+                                        {user.isActive ? 'Deactivate' : 'Activate'}
+                                    </button>
+                                </td>
                             </tr>
                         ))}
                     </tbody>

@@ -1,0 +1,161 @@
+.claims-header {
+    margin-bottom: 2rem;
+}
+
+.claims-summary-grid {
+    margin-bottom: 1.75rem;
+}
+
+.claims-filter-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.filter-pill {
+    padding: 7px 16px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-soft);
+    transition: 0.2s ease;
+}
+
+.filter-pill.active {
+    border-color: rgba(37, 99, 235, 0.35);
+    background: rgba(37, 99, 235, 0.16);
+    color: #dbeafe;
+}
+
+.claims-table-card {
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.claims-empty-state {
+    min-height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: var(--text-muted);
+    padding: 2rem;
+}
+
+.claims-empty-message {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+}
+
+.claims-empty-message p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.empty-link {
+    color: #60a5fa;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.claims-date-cell {
+    color: var(--text-soft);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.claims-amount-cell {
+    color: var(--green);
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.table-row-hovered {
+    background: rgba(37, 99, 235, 0.08);
+}
+
+.fraud-meter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.fraud-meter-track {
+    width: 72px;
+    height: 5px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+}
+
+.fraud-meter-fill {
+    height: 100%;
+    border-radius: 999px;
+    transition: width 0.6s ease;
+}
+
+.fraud-meter-fill.high {
+    background: var(--red);
+}
+
+.fraud-meter-fill.medium {
+    background: var(--orange);
+}
+
+.fraud-meter-fill.low {
+    background: var(--green);
+}
+
+.fraud-score-text {
+    min-width: 24px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.fraud-score-text.high {
+    color: var(--red);
+}
+
+.fraud-score-text.medium {
+    color: var(--orange);
+}
+
+.fraud-score-text.low {
+    color: var(--green);
+}
+
+.badge-status-pending {
+    background: rgba(245, 158, 11, 0.12);
+    color: var(--orange);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.badge-status-approved {
+    background: rgba(16, 185, 129, 0.12);
+    color: var(--green);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.badge-status-rejected {
+    background: rgba(244, 63, 94, 0.12);
+    color: var(--red);
+    border: 1px solid rgba(244, 63, 94, 0.3);
+}
+
+.badge-result-fraud {
+    background: rgba(244, 63, 94, 0.1);
+    color: var(--red);
+    border: 1px solid rgba(244, 63, 94, 0.3);
+}
+
+.badge-result-safe {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--green);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}

@@ -1,9 +1,12 @@
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import '../App.css';
 
 export default function Navbar() {
     const { user, logout } = useAuth();
     const navigate = useNavigate();
+    const [open, setOpen] = useState(false);
 
     const handleLogout = async () => {
         await logout();
@@ -11,33 +14,54 @@ export default function Navbar() {
     };
 
     return (
-        <nav style={{
-            display: 'flex', justifyContent: 'space-between',
-            alignItems: 'center', padding: '1rem 2rem',
-            backgroundColor: '#1a1a2e', color: 'white'
-        }}>
-            <Link to="/dashboard" style={{ color: 'white', textDecoration: 'none', fontWeight: 'bold', fontSize: 18 }}>
-                FraudGuard
-            </Link>
+        <>
+            <nav className="topbar">
+                <div className="topbar-left">
+                    <div className="hamburger" onClick={() => setOpen(!open)}>
+                        <span className="hamburger-line" />
+                        <span className="hamburger-line" />
+                        <span className="hamburger-line" />
+                    </div>
+
+                    <Link to="/dashboard" className="brand">
+                        FraudGuard
+                    </Link>
+                </div>
+
+                {user && <span className="user-text">Hi, {user.name}</span>}
+            </nav>
 
             {user && (
-                <div style={{ display: 'flex', gap: 20, alignItems: 'center' }}>
-                    <Link to="/dashboard" style={{ color: 'white', textDecoration: 'none' }}>Dashboard</Link>
-                    <Link to="/claims/new" style={{ color: 'white', textDecoration: 'none' }}>File Claim</Link>
-                    <Link to="/claims/my" style={{ color: 'white', textDecoration: 'none' }}>My Claims</Link>
-                    {user.role === 'admin' && (
-                        <Link to="/admin" style={{ color: 'white', textDecoration: 'none' }}>Admin</Link>
-                    )}
-                    <span style={{ color: '#aaa' }}>Hi, {user.name}</span>
-                    <button onClick={handleLogout} style={{
-                        background: '#e74c3c', color: 'white',
-                        border: 'none', padding: '6px 14px',
-                        borderRadius: 4, cursor: 'pointer'
-                    }}>
-                        Logout
-                    </button>
-                </div>
+                <>
+                    <div className={`sidebar ${open ? 'open' : ''}`}>
+                        <Link to="/claims/new" className="sidebar-link" onClick={() => setOpen(false)}>
+                            File Claim
+                        </Link>
+
+                        <Link to="/claims/my" className="sidebar-link" onClick={() => setOpen(false)}>
+                            My Claims
+                        </Link>
+
+                        {user.role === 'admin' && (
+                            <Link to="/admin" className="sidebar-link" onClick={() => setOpen(false)}>
+                                Admin Panel
+                            </Link>
+                        )}
+
+                        <div
+                            className="sidebar-link logout"
+                            onClick={async () => {
+                                setOpen(false);
+                                await handleLogout();
+                            }}
+                        >
+                            Logout
+                        </div>
+                    </div>
+
+                    {open && <div className="sidebar-overlay" onClick={() => setOpen(false)} />}
+                </>
             )}
-        </nav>
+        </>
     );
 }

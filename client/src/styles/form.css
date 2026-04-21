@@ -1,0 +1,345 @@
+.form-shell {
+    max-width: 900px;
+}
+
+.form-header {
+    margin-bottom: 2rem;
+}
+
+.form-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.06);
+    margin: 1.6rem 0;
+}
+
+.textarea-resizable {
+    resize: vertical;
+}
+
+.btn-full {
+    width: 100%;
+}
+
+.btn-disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 0.5rem;
+}
+
+.form-actions-grow {
+    flex: 1;
+}
+
+.step-indicator {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2.2rem;
+}
+
+.step-item {
+    display: flex;
+    align-items: center;
+}
+
+.step-item-grow {
+    flex: 1;
+}
+
+.step-node-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.step-node {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 800;
+    transition: all 0.3s;
+}
+
+.step-node.active {
+    background: var(--blue);
+    color: white;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.18);
+}
+
+.step-node.inactive {
+    background: rgba(255, 255, 255, 0.07);
+    color: #475569;
+}
+
+.step-label {
+    font-size: 9px;
+    font-weight: 700;
+    margin-top: 6px;
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+
+.step-label.active {
+    color: #60a5fa;
+}
+
+.step-label.inactive {
+    color: #334155;
+}
+
+.step-line {
+    flex: 1;
+    height: 1.5px;
+    margin: -18px 8px 0;
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 999px;
+    transition: background 0.4s;
+}
+
+.step-line.active {
+    background: linear-gradient(90deg, #2563eb, rgba(37, 99, 235, 0.5));
+}
+
+.review-card {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 14px;
+    padding: 1.3rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border);
+}
+
+.review-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.review-row.last {
+    border-bottom: none;
+}
+
+.review-row-label {
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding-top: 2px;
+}
+
+.review-row-value {
+    color: #cbd5e1;
+    font-size: 13px;
+    font-weight: 600;
+    max-width: 60%;
+    text-align: right;
+}
+
+.form-error {
+    background: rgba(244, 63, 94, 0.08);
+    border: 1px solid rgba(244, 63, 94, 0.25);
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-bottom: 1rem;
+    color: var(--red);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.btn-loading {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.spinner-small {
+    width: 15px;
+    height: 15px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.4);
+    border-top-color: white;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.result-card {
+    text-align: center;
+}
+
+.result-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    border: 1.5px solid transparent;
+}
+
+.result-icon.safe {
+    background: rgba(16, 185, 129, 0.12);
+    border-color: rgba(16, 185, 129, 0.4);
+}
+
+.result-icon.fraud {
+    background: rgba(244, 63, 94, 0.12);
+    border-color: rgba(244, 63, 94, 0.4);
+}
+
+.result-title {
+    margin: 0 0 6px;
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.result-title.safe {
+    color: var(--green);
+}
+
+.result-title.fraud {
+    color: var(--red);
+}
+
+.result-subtitle {
+    color: var(--text-soft);
+    margin: 0 0 2rem;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.score-ring-wrap {
+    margin: 0 auto 1.8rem;
+    width: 120px;
+    position: relative;
+}
+
+.score-ring-circle {
+    transition: stroke-dashoffset 1s ease;
+}
+
+.score-ring-circle.high {
+    stroke: var(--red);
+}
+
+.score-ring-circle.medium {
+    stroke: var(--orange);
+}
+
+.score-ring-circle.low {
+    stroke: var(--green);
+}
+
+.score-ring-center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.score-ring-value {
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.score-ring-value.high {
+    color: var(--red);
+}
+
+.score-ring-value.medium {
+    color: var(--orange);
+}
+
+.score-ring-value.low {
+    color: var(--green);
+}
+
+.score-ring-label {
+    font-size: 9px;
+    color: var(--text-muted);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.result-status-pill {
+    display: inline-block;
+    background: rgba(37, 99, 235, 0.12);
+    border: 1px solid rgba(37, 99, 235, 0.25);
+    border-radius: 999px;
+    padding: 5px 16px;
+    margin-bottom: 1.5rem;
+    font-size: 12px;
+    font-weight: 700;
+    color: #60a5fa;
+    letter-spacing: 1px;
+}
+
+.fraud-flags-list {
+    margin-bottom: 1.8rem;
+    text-align: left;
+}
+
+.fraud-flag-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(244, 63, 94, 0.07);
+    border: 1px solid rgba(244, 63, 94, 0.18);
+    border-radius: 10px;
+    padding: 9px 14px;
+    margin-bottom: 8px;
+}
+
+.fraud-flag-icon {
+    color: var(--red);
+    font-size: 14px;
+}
+
+.fraud-flag-text {
+    color: #fca5a5;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.result-btn {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .review-row {
+        flex-direction: column;
+    }
+
+    .review-row-value {
+        max-width: 100%;
+        text-align: left;
+    }
+
+    .step-label {
+        font-size: 8px;
+    }
+}

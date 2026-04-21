@@ -1,0 +1,158 @@
+.app-page {
+    min-height: 100vh;
+    padding: 2.5rem 2rem;
+    color: var(--text-main);
+}
+
+.page-shell {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.page-title {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.7px;
+    color: var(--text-main);
+}
+
+.page-subtitle {
+    margin: 6px 0 0;
+    color: var(--text-soft);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.page-eyebrow {
+    margin: 0 0 6px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+}
+
+.topbar {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    background: #0a0f1e;
+    border-bottom: 1px solid #1f2d3d;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.brand {
+    color: var(--green);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.user-text {
+    color: #6b7280;
+    font-size: 13px;
+}
+
+.hamburger {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.hamburger-line {
+    width: 20px;
+    height: 2px;
+    background: var(--text-main);
+}
+
+.sidebar {
+    position: fixed;
+    top: 60px;
+    left: -220px;
+    width: 220px;
+    height: calc(100vh - 60px);
+    background: var(--bg-soft);
+    border-right: 1px solid var(--border-soft);
+    transition: left 0.3s ease;
+    padding-top: 10px;
+    z-index: 99;
+}
+
+.sidebar.open {
+    left: 0;
+}
+
+.sidebar-link {
+    display: block;
+    padding: 14px 18px;
+    color: #cbd5e1;
+    font-size: 14px;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    text-decoration: none;
+}
+
+.sidebar-link.logout {
+    color: var(--red);
+    cursor: pointer;
+}
+
+.sidebar-overlay {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 60px);
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 98;
+}
+
+.section-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.center-card {
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .app-page {
+        padding: 1.5rem 1rem;
+    }
+
+    .page-title {
+        font-size: 24px;
+    }
+
+    .topbar {
+        padding: 0 14px;
+    }
+
+    .page-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
