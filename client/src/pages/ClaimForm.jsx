@@ -91,7 +91,7 @@ export default function ClaimForm() {
         } catch (err) {
             console.error('Claim submission failed:', err);
 
-            setError('Failed to submit claim. Please check inputs or backend.');
+            setError('Failed to submit claim. Please check inputs.');
 
         } finally {
             setLoading(false);
