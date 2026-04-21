@@ -14,4 +14,4 @@ router.route('/:id')
 
 router.put('/:id/status', protect, adminOnly, updateStatus);
 
-module.exports = router;    
+module.exports = router;

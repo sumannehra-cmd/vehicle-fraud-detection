@@ -1,0 +1,31 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Node setup
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Backend install
+        run: cd backend && npm install
+
+      - name: Frontend install
+        run: cd frontend && npm install
+
+      - name: Frontend build
+        run: cd frontend && npm run build
+        env:
+          MONGO_URI:           ${{ secrets.MONGO_URI }}
+          JWT_SECRET:          ${{ secrets.JWT_SECRET }}
+          JWT_REFRESH_SECRET:  ${{ secrets.JWT_REFRESH_SECRET }}
