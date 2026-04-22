@@ -3,13 +3,15 @@ pipeline {
 
   stages {
     stage('Code Lao') {
-      steps { checkout scm }
+      steps { git branch: 'develop',
+    url: 'https://github.com/sumannehra-cmd/vehicle-fraud-detection.git',
+    credentialsId: 'github-creds' }
     }
 
     stage('Backend Install') {
       steps {
         dir('backend') {
-          sh 'npm install'
+          bat 'npm install'
         }
       }
     }
@@ -17,7 +19,7 @@ pipeline {
     stage('Frontend Install') {
       steps {
         dir('frontend') {
-          sh 'npm install'
+          bat 'npm install'
         }
       }
     }
@@ -25,7 +27,7 @@ pipeline {
     stage('Frontend Build') {
       steps {
         dir('frontend') {
-          sh 'npm run build'
+          bat 'npm run build'
         }
       }
     }
