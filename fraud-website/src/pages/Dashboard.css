@@ -1,0 +1,39 @@
+.dash-container {
+  min-height: 100vh;
+  background: #0f172a;
+  color: white;
+}
+
+.dash-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background: #020617;
+}
+
+.dash-nav button {
+  background: crimson;
+  border: none;
+  padding: 8px 16px;
+  color: white;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.dash-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 40px;
+}
+
+.card {
+  background: #020617;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+
+.card.danger {
+  border-left: 5px solid crimson;
+}
